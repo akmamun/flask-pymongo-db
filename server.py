@@ -6,9 +6,9 @@ app = Flask(__name__)
 # get data from cameras
 @app.route('/cameras', methods=['GET'])
 def get_camera():
-    collection_camera = d.mongo.db.cameras
+    collection_camera = d.mongo.db.cameras  # db name
     camera_list = []
-    for obj in collection_camera.find():
+    for obj in collection_camera.find():  # find from db and skip 1st column which is not jsonify 
         obj.pop('_id')
         camera_list.append(obj)
     return jsonify(camera_list)
@@ -17,7 +17,7 @@ def get_camera():
 # add camera
 @app.route('/add/camera', methods=['GET', 'POST'])
 def add_camera():
-    camera = d.mongo.db.cameras
+    camera = d.mongo.db.cameras # db name
     data = {
         'ip': request.json['ip'],
         'username': request.json['username'],
@@ -42,9 +42,9 @@ def add_camera_image():
 # get images
 @app.route('/camera/images', methods=['GET'])
 def get_images():
-    collection_images = d.mongo.db.images
+    collection_images = d.mongo.db.images  # db name
     image_list = []
-    for obj in collection_images.find():
+    for obj in collection_images.find(): # find from db and skip 1st column which is not jsonify
         obj.pop('_id')
         image_list.append(obj)
     return jsonify(image_list)
