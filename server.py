@@ -11,7 +11,7 @@ def get_camera():
     for obj in collection_camera.find():
         obj.pop('_id')
         camera_list.append(obj)
-        return jsonify(camera_list)
+    return jsonify(camera_list)
 
 
 # add camera
@@ -47,7 +47,7 @@ def get_images():
     for obj in collection_images.find():
         obj.pop('_id')
         image_list.append(obj)
-        return jsonify(image_list)
+    return jsonify(image_list)
 
 
 if __name__ == '__main__':
